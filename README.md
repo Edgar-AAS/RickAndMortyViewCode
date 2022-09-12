@@ -4,7 +4,7 @@
 
 * [Descrição do Projeto](#descrição-do-projeto)
 
- Este é um projeto de listagem de personagens da série Rick And Morty. Construído com intuito de Praticar conhecimentos adquiridos, este aplicativo contém coleções de personagens separados por categorias. Cada personagem contém suas especificações (Retirados de uma API) e a possiblidade de o usuario favorita-los.
+ Este é um projeto de listagem de personagens da série Rick And Morty. Construído com intuito de Praticar conhecimentos adquiridos, este aplicativo contém coleções de personagens separados por categorias. Cada personagem contém suas especificações (Retirados de uma API) e a possiblidade de o usuario favorita-lo.
 
 ![RickAndMortyGif](https://user-images.githubusercontent.com/103855076/189564996-d5d7083a-6069-4ca8-830b-2e7fb0f727aa.gif)
 
