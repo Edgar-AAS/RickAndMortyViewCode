@@ -13,10 +13,10 @@ final class DetailViewController: UIViewController  {
        return view as? DetailScreen
     }()
     
-    private let character: Result?
+    private let character: Character?
     private let viewModel: DetailViewModel
     
-    init(character: Result, viewModel: DetailViewModel) {
+    init(character: Character, viewModel: DetailViewModel) {
         self.viewModel = viewModel
         self.character = character
         super.init(nibName: nil, bundle: nil)

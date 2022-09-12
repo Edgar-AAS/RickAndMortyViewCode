@@ -29,7 +29,7 @@ final class FavoritesViewModel {
         }
     }
     
-    func mappingFavorite(favorite: Favorite) -> Result? {
+    func mappingFavorite(favorite: Favorite) -> Character? {
         guard let id = favorite.id,
               let name = favorite.name,
               let status = favorite.status,
@@ -40,7 +40,7 @@ final class FavoritesViewModel {
             return nil
         }
         
-        return Result(
+        return Character(
             id: Int(id) ?? 0,
             name: name,
             status: status,

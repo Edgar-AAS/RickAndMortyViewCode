@@ -8,10 +8,10 @@
 import Foundation
 
 struct RickAndMortyData: Codable {
-    let results: [Result]
+    let results: [Character]
 }
 
-struct Result: Codable {
+struct Character: Codable {
     let id: Int
     let name: String
     let status: String

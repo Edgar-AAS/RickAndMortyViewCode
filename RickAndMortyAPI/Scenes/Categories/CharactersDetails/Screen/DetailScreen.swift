@@ -93,7 +93,7 @@ final class DetailScreen: UIView {
     
     // MARK: - Fill Status
     
-    public func setupCharacterData(character: Result) {
+    public func setupCharacterData(character: Character) {
         viewModel = DetailScreenViewModel(data: character)
         
         guard let viewModel = viewModel else  { return }

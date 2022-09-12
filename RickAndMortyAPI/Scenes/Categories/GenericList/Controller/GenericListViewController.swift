@@ -10,7 +10,7 @@ import UIKit
 final class GenericListViewController: UIViewController {
     private var collectionView: UICollectionView?
     private var viewModel: GenericListViewModel!
-    private var characterResults = [Result]()
+    private var characterResults = [Character]()
     
     init(viewModel: GenericListViewModel) {
         self.viewModel = viewModel
@@ -66,13 +66,17 @@ final class GenericListViewController: UIViewController {
 
 //MARK: - Updating ViewController
 extension GenericListViewController: GenericListViewModelDelegate {
-    func didUpadateController(_ genericListViewModel: GenericListViewModel, charactersResult: [Result]) {
-        self.characterResults.append(contentsOf: charactersResult)
+    func didUpadateController(_ genericListViewModel: GenericListViewModel, charactersResult: RickAndMortyData) {
+        self.characterResults.append(contentsOf: charactersResult.results)
         viewModel.setCharacterResult(result: characterResults)
             
         UIView.performWithoutAnimation {
-            self.collectionView?.reloadData()
+            collectionView?.reloadData()
         }
+    }
+    
+    func didFailRequest(_ genericListViewModel: GenericListViewModel, error: Error) {
+        print(error)
     }
 }
     

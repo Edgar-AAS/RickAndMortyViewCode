@@ -8,8 +8,18 @@
 import UIKit
 
 final class CategoriesViewController: UITableViewController {
-    private var categoriesArray = K.categoriesArray
-    private let reusableIdentifier = String(describing: UITableViewCell.self)
+    
+    private let viewModel = CategorieViewModel()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        title = "Categories"
+        
+        self.tableView = UITableView(frame: CGRect.zero, style: .grouped)
+        tableView.rowHeight = 100
+        tableView.register(CategoriesTableViewCell.self, forCellReuseIdentifier: CategoriesTableViewCell.categorieCell)
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -30,33 +40,18 @@ final class CategoriesViewController: UITableViewController {
         super.viewWillDisappear(animated)
         
         navigationController?.navigationBar.barTintColor = .black
-        
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        title = "Categories"
-        
-        self.tableView = UITableView(frame: CGRect.zero, style: .grouped)
-        tableView.rowHeight = 100
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: reusableIdentifier)
     }
 }
 
 //MARK: - UITableViewDataSource
 extension CategoriesViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categoriesArray.count
+        return viewModel.getCount
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reusableIdentifier, for: indexPath)
-        cell.backgroundColor = .black
-        cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        cell.textLabel?.textColor = .white
-        cell.accessoryType = .disclosureIndicator
-        cell.textLabel?.text = categoriesArray[indexPath.row]
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoriesTableViewCell.categorieCell, for: indexPath) as? CategoriesTableViewCell else { fatalError("Unable to dequeue GenderCell")}
+        cell.setupCategorieCell(categorie: viewModel.getCategorie(indexPath: indexPath))
         return cell
     }
 }
@@ -64,7 +59,7 @@ extension CategoriesViewController {
 //MARK: - UITableViewDelegate
 extension CategoriesViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let category = ListOfCategories(rawValue: categoriesArray[indexPath.row]) else { return }
+        guard let category = ListOfCategories(rawValue: viewModel.getCategorie(indexPath: indexPath)) else { return }
         
         let viewController = GenericListViewController(viewModel: GenericListViewModel(category: category))
         
@@ -78,7 +73,7 @@ extension CategoriesViewController {
         case .favorites:
             navigationController?.pushViewController(FavoritesViewController(), animated: true)
         default:
-            break
+            return
         }
     }
 }

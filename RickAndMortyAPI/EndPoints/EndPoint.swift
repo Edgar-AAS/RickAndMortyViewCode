@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct EndPoints {
+struct EndPoint {
     static let alive = "&status=alive"
     static let dead = "&status=dead"
     static let statusUnknown = "&status=unknown"
@@ -21,4 +21,11 @@ struct EndPoints {
     static let speciesUnknown = "&species=unknown"
     static let poopybutthole = "&species=poopybutthole"
     static let mythologicalCreature = "&species=Mythological%20Creature"
+    
+    
+    static func buildUrl(currentPage: Int, endPoint: String) -> String {
+        let urlBase = "https://rickandmortyapi.com/api/character/"
+        let urlString = urlBase + "?page=\(currentPage)" + endPoint
+        return urlString
+    }
 }

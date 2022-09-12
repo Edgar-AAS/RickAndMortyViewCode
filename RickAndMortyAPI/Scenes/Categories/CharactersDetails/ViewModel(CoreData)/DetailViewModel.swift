@@ -3,7 +3,7 @@
 //  RickAndMortyAPI
 //
 //  Created by Edgar Arlindo on 16/08/22.
-//
+//  Coredata -> Service
 
 import UIKit.UIApplication
 import CoreData
@@ -11,12 +11,12 @@ import CoreData
 final class DetailViewModel {
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private var favorites = [Favorite]()
-    private var characterData: Result?
+    private var characterData: Character?
     private var stringID: String?
     private var isSelectedFavorite: Bool = false
     private var isRemoved: Bool = false
     
-    init(characterData: Result?) {
+    init(characterData: Character?) {
         self.characterData = characterData
     }
     

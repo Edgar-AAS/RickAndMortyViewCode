@@ -38,10 +38,6 @@ final class CharacterCollectionViewCell: UICollectionViewCell {
         let image: UIImage
     }
     
-    public func fill(viewModel: ViewModel) {
-        self.viewModel = viewModel
-    }
-    
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
         

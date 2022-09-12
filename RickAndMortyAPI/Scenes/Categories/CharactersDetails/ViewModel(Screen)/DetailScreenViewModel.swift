@@ -15,9 +15,9 @@ final class DetailScreenViewModel {
         case origin = "Origin: "
     }
     
-    private var data: Result
+    private var data: Character
     
-    init(data: Result) {
+    init(data: Character) {
         self.data = data
     }
         

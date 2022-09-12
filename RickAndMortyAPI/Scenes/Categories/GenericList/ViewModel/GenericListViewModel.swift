@@ -9,7 +9,8 @@ import UIKit.UIImageView
 import CoreData
 
 protocol GenericListViewModelDelegate: AnyObject {
-    func didUpadateController(_ genericListViewModel: GenericListViewModel, charactersResult: [Result])
+    func didUpadateController(_ genericListViewModel: GenericListViewModel, charactersResult: RickAndMortyData)
+    func didFailRequest(_ genericListViewModel: GenericListViewModel, error: Error)
 }
 
 final class GenericListViewModel {
@@ -19,9 +20,9 @@ final class GenericListViewModel {
     private var currentPage = 1
     private let totalPage = 42
     private var favoritesResult = [Favorite]()
-    private var charaterResults = [Result]()
+    private var charaterResults = [Character]()
     private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
+    
     init(category: ListOfCategories, isSpecies: Bool = false, isGender: Bool = false) {
         self.category = category
         self.isSpecies = isSpecies
@@ -29,6 +30,55 @@ final class GenericListViewModel {
     }
     
     weak var delegate: GenericListViewModelDelegate?
+    
+    func fetchCategory(currentPage: Int) {
+        let endPoint: String
+        
+        switch category {
+        case .alive:
+            endPoint = EndPoint.alive
+        case .dead:
+            endPoint = EndPoint.dead
+        case .unknown:
+            if isSpecies {
+                endPoint = EndPoint.speciesUnknown
+            } else if isGender {
+                endPoint = EndPoint.genderUnknown
+            } else {
+                endPoint = EndPoint.statusUnknown
+            }
+        case .human:
+            endPoint = EndPoint.human
+        case .humanoid:
+            endPoint = EndPoint.humanoid
+        case .alien:
+            endPoint = EndPoint.alien
+        case .poopybutthole:
+            endPoint = EndPoint.poopybutthole
+        case .mythologycalCreature:
+            endPoint = EndPoint.mythologicalCreature
+        case .male:
+            endPoint = EndPoint.male
+        case .female:
+            endPoint = EndPoint.female
+        case .genderless:
+            endPoint = EndPoint.genderless
+        default:
+            endPoint = ""
+            return
+        }
+        
+        WebService.getAllRequest(of: RickAndMortyData.self, from: EndPoint.buildUrl(currentPage: currentPage, endPoint: endPoint)) { (result) in
+            switch result {
+            case .success(let result):
+                DispatchQueue.main.async {
+                    self.delegate?.didUpadateController(self, charactersResult: result)
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
     
     var getCurrentPage: Int {
         return currentPage
@@ -42,54 +92,11 @@ final class GenericListViewModel {
         return category.rawValue
     }
     
-    func setCharacterResult(result: [Result]) {
+    func setCharacterResult(result: [Character]) {
         self.charaterResults = result
     }
     
-    func fetchCategory(currentPage: Int) {
-        let endPoint: String
-            
-        switch category {
-        case .alive:
-            endPoint = EndPoints.alive
-        case .dead:
-            endPoint = EndPoints.dead
-        case .unknown:
-            if isSpecies {
-                endPoint = EndPoints.speciesUnknown
-            } else if isGender {
-                endPoint = EndPoints.genderUnknown
-            } else {
-                endPoint = EndPoints.statusUnknown
-            }
-        case .human:
-            endPoint = EndPoints.human
-        case .humanoid:
-            endPoint = EndPoints.humanoid
-        case .alien:
-            endPoint = EndPoints.alien
-        case .poopybutthole:
-            endPoint = EndPoints.poopybutthole
-        case .mythologycalCreature:
-            endPoint = EndPoints.mythologicalCreature
-        case .male:
-            endPoint = EndPoints.male
-        case .female:
-            endPoint = EndPoints.female
-        case .genderless:
-            endPoint = EndPoints.genderless
-        default:
-            endPoint = ""
-            return
-        }
-                
-        RickAndMortyManager().performRequest(endPoint: endPoint, currentPage: currentPage) { (data) in
-            guard let results = data?.results else { return }
-            self.delegate?.didUpadateController(self, charactersResult: results)
-        }
-    }
-
-//MARK: - Core data read
+    //MARK: - Core data read
     func loadFavorites() {
         let request: NSFetchRequest<Favorite> = Favorite.fetchRequest()
         
@@ -100,8 +107,8 @@ final class GenericListViewModel {
         }
     }
     
-
-//MARK: Pagination
+    
+    //MARK: Pagination
     func getNextPage(row: Int) {
         if currentPage < totalPage && row == charaterResults.count - 1 {
             currentPage += 1

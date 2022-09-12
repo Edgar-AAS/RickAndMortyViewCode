@@ -2,7 +2,7 @@
 //  UIImageView.swift
 //  RickAndMortyAPI
 //
-//  Created by Leonardo Almeida on 04/09/22.
+//  Created by Edgar Arlindo on 04/09/22.
 //
 
 import UIKit.UIImageView
