@@ -2,7 +2,7 @@
 //  DetailScreenViewModel.swift
 //  RickAndMortyAPI
 //
-//  Created by Leonardo Almeida on 03/09/22.
+//  Created by Edgar Arlindo on 03/09/22.
 //
 
 import UIKit.UIImage

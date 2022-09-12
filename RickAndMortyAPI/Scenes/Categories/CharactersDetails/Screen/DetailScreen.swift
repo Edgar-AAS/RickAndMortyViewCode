@@ -136,7 +136,6 @@ extension DetailScreen: CodeView {
             stackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 8),
             stackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -8),
             stackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -24)
-            
         ])
     }
     

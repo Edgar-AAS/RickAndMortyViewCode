@@ -20,6 +20,14 @@ final class DetailViewModel {
         self.characterData = characterData
     }
     
+    var getFillStarName: String {
+        return "star.fill"
+    }
+    
+    var getEmptyStarName: String {
+        return "star"
+    }
+    
     var getIsSelectedFavorite: Bool {
         return isSelectedFavorite
     }
@@ -50,7 +58,7 @@ final class DetailViewModel {
         do {
             favorites = try context.fetch(request)
         } catch {
-            print("Error loading favorites \(error)")
+            print("Error for loading favorites \(error)")
         }
     }
     

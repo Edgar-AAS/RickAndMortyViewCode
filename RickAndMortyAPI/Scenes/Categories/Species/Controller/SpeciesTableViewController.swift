@@ -14,9 +14,9 @@ final class SpeciesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Species"
+        title = viewModel.getTitle
 
-        tableView.rowHeight = 100
+        tableView.rowHeight = viewModel.tablewViewRowHeight
         tableView.register(SpeciesTableViewCell.self, forCellReuseIdentifier: SpeciesTableViewCell.specieCell)
     }
     

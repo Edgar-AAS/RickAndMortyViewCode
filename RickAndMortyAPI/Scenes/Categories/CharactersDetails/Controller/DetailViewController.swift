@@ -34,7 +34,7 @@ final class DetailViewController: UIViewController  {
         super.viewDidLoad()
         setupView()
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "star"), style: .plain, target: self, action: #selector(favoriteButtonTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: viewModel.getFillStarName), style: .plain, target: self, action: #selector(favoriteButtonTapped))
         viewModel.setStringID(intID: character?.id)
         viewModel.loadFavorites()
     }
@@ -52,9 +52,9 @@ final class DetailViewController: UIViewController  {
     
    private func configureImageStar() -> UIImage? {
         if viewModel.getIsFavorite() {
-            return UIImage(systemName: "star.fill")
+            return UIImage(systemName: viewModel.getFillStarName)
         } else {
-            return UIImage(systemName: "star")
+            return UIImage(systemName: viewModel.getEmptyStarName)
         }
     }
     
@@ -68,7 +68,7 @@ final class DetailViewController: UIViewController  {
     
     @objc func favoriteButtonTapped(sender: UIBarButtonItem) {
         viewModel.changeFavoritesCondition()
-        sender.image = viewModel.getIsSelectedFavorite ? UIImage(systemName: "star.fill") : UIImage(systemName: "star")
+        sender.image = viewModel.getIsSelectedFavorite ? UIImage(systemName: viewModel.getFillStarName) : UIImage(systemName: viewModel.getEmptyStarName)
         configureBorderColor()
         viewModel.didSelectFavorite()
     }

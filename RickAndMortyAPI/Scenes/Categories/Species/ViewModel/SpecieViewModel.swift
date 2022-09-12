@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreGraphics
 
 final class SpecieViewModel {
     private let speciesArray = K.speciesArray
@@ -16,5 +17,13 @@ final class SpecieViewModel {
     
     var getCount: Int {
         return speciesArray.count
+    }
+    
+    var tablewViewRowHeight: CGFloat {
+        return 100
+    }
+    
+    var getTitle: String {
+        return "Species"
     }
 }

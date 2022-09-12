@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import CoreGraphics
 
-class GenderViewModel {
+final class GenderViewModel {
     private let gendersArray = K.gendersArray
     
     func getGender(indexPath: IndexPath) -> String {
@@ -16,6 +17,14 @@ class GenderViewModel {
     
     var getCount: Int {
         return gendersArray.count
+    }
+    
+    var tableViewRowHeight: CGFloat {
+        return 100
+    }
+    
+    var getTitle: String {
+        return "Gender"
     }
     
 }

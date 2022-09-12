@@ -28,6 +28,48 @@ final class GenericListViewModel {
         self.isSpecies = isSpecies
         self.isGender = isGender
     }
+
+    func loadCurrentCharacter(indexPath: IndexPath) -> Character {
+        return charaterResults[indexPath.row]
+    }
+    
+    func getMinimumLineSpacingForSection() -> CGFloat {
+        return 10
+    }
+    
+    func getMinimumInteritemSpacingForSection() -> CGFloat {
+        return 1
+    }
+    
+    var getCharacterResult: [Character] {
+        return charaterResults
+    }
+    
+    var getCount: Int {
+        return charaterResults.count
+    }
+    
+    func getImageString(indexPath: IndexPath) -> String {
+        return charaterResults[indexPath.row].image
+    }
+    
+    var getCurrentPage: Int {
+        return currentPage
+    }
+    
+    var getFavorite: [Favorite] {
+        return favoritesResult
+    }
+    
+    func getTitleText() -> String {
+        return category.rawValue
+    }
+    
+    func validateFavorite(indexPath: IndexPath) -> Bool {
+        let currentID = String(charaterResults[indexPath.row].id)
+        let IdArray = favoritesResult.compactMap({ $0.id })
+        return IdArray.contains(currentID)
+    }
     
     weak var delegate: GenericListViewModelDelegate?
     
@@ -73,29 +115,13 @@ final class GenericListViewModel {
             case .success(let result):
                 DispatchQueue.main.async {
                     self.delegate?.didUpadateController(self, charactersResult: result)
+                    self.charaterResults.append(contentsOf: result.results)
                 }
             case .failure(let error):
                 print(error)
             }
         }
     }
-    
-    var getCurrentPage: Int {
-        return currentPage
-    }
-    
-    var getFavorite: [Favorite] {
-        return favoritesResult
-    }
-    
-    func getTitleText() -> String {
-        return category.rawValue
-    }
-    
-    func setCharacterResult(result: [Character]) {
-        self.charaterResults = result
-    }
-    
     //MARK: - Core data read
     func loadFavorites() {
         let request: NSFetchRequest<Favorite> = Favorite.fetchRequest()
@@ -106,7 +132,6 @@ final class GenericListViewModel {
             print("Error loading favorites \(error)")
         }
     }
-    
     
     //MARK: Pagination
     func getNextPage(row: Int) {

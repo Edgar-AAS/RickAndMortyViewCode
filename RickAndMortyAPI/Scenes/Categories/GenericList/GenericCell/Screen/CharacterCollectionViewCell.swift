@@ -10,6 +10,8 @@ import UIKit
 final class CharacterCollectionViewCell: UICollectionViewCell {
     static let reuseIdentifier = String(describing: CharacterCollectionViewCell.self)
     
+    private var viewModel: CustomCellViewModel?
+    
     lazy var characterImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -31,13 +33,6 @@ final class CharacterCollectionViewCell: UICollectionViewCell {
         return label
     }()
     
-    var viewModel: ViewModel?
-            
-    struct ViewModel {
-        let name: String
-        let image: UIImage
-    }
-    
     override init(frame: CGRect = .zero) {
         super.init(frame: frame)
         
@@ -51,6 +46,14 @@ final class CharacterCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setupGenericCell(with character: Character) {
+        viewModel = CustomCellViewModel(character: character)
+        
+        guard let viewModel = viewModel else { return }
+        characterImage.dowloadImage(at: viewModel.getCharacterImageString())
+        nameLabel.text = viewModel.getCharacterName()
+    }
+        
     override func layoutSubviews() {
         super.layoutSubviews()
         

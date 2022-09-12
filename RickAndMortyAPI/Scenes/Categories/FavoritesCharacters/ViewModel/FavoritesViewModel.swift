@@ -28,15 +28,38 @@ final class FavoritesViewModel {
             fatalError("error for load favorites: \(error.localizedDescription)")
         }
     }
+
+    var getCount: Int {
+        return favoriteResult.count
+    }
     
-    func mappingFavorite(favorite: Favorite) -> Character? {
-        guard let id = favorite.id,
-              let name = favorite.name,
-              let status = favorite.status,
-              let species = favorite.species,
-              let gender = favorite.gender,
-              let origin = favorite.origin,
-              let image = favorite.image else {
+    
+    var getTitle: String {
+        return "Favorites"
+    }
+    
+    func loadCurrentFavorite(indexPath: IndexPath) -> Favorite? {
+        return favoriteResult[indexPath.row]
+    }
+    
+    var getMinimumLineSpacingForSection: CGFloat {
+        return 10
+    }
+    
+    var getMinimumInteritemSpacingForSection: CGFloat {
+        return 1
+    }
+    
+    func mappingFavorite(indexPath: IndexPath) -> Character? {
+        let favorite = favoriteResult[indexPath.row]
+        
+        guard let id = favorite?.id,
+              let name = favorite?.name,
+              let status = favorite?.status,
+              let species = favorite?.species,
+              let gender = favorite?.gender,
+              let origin = favorite?.origin,
+              let image = favorite?.image else {
             return nil
         }
         

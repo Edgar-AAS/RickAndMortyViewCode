@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SpeciesTableViewCell: UITableViewCell {
+final class SpeciesTableViewCell: UITableViewCell {
     static let specieCell = String(describing: SpeciesTableViewCell.self)
     
     override func awakeFromNib() {

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreGraphics
 
 class CategorieViewModel {
     private let categorieArray = K.categoriesArray
@@ -17,4 +18,13 @@ class CategorieViewModel {
     var getCount: Int {
         return categorieArray.count
     }
+    
+    var getTitle: String {
+        return "Categories"
+    }
+    
+    var tableViewRowHeight: CGFloat {
+        return 100
+    }
+    
 }

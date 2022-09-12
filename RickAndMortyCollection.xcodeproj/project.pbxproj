@@ -28,6 +28,7 @@
 		7255741C27F238DD002B20F2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7255741B27F238DD002B20F2 /* Constants.swift */; };
 		7257743428C5506E0060D432 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7257743328C5506E0060D432 /* UIImageView.swift */; };
 		725E53092891A92C00F72EF0 /* CharacterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725E53082891A92C00F72EF0 /* CharacterCollectionViewCell.swift */; };
+		725FCD2128CF9E1900E731CA /* CustomCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725FCD2028CF9E1900E731CA /* CustomCellViewModel.swift */; };
 		7264775C28A6B7EA00333030 /* SpeciesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7264775B28A6B7EA00333030 /* SpeciesTableViewController.swift */; };
 		726A3E98284293C1009D9B23 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 726A3E96284293C1009D9B23 /* DataModel.xcdatamodeld */; };
 		7278042D2898146C00831570 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7278042C2898146C00831570 /* CategoriesViewController.swift */; };
@@ -66,6 +67,7 @@
 		7255741B27F238DD002B20F2 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7257743328C5506E0060D432 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		725E53082891A92C00F72EF0 /* CharacterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCollectionViewCell.swift; sourceTree = "<group>"; };
+		725FCD2028CF9E1900E731CA /* CustomCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellViewModel.swift; sourceTree = "<group>"; };
 		7264775B28A6B7EA00333030 /* SpeciesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeciesTableViewController.swift; sourceTree = "<group>"; };
 		726A3E97284293C1009D9B23 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		7278042C2898146C00831570 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
@@ -251,19 +253,20 @@
 			path = Screen;
 			sourceTree = "<group>";
 		};
-		724A61BD28B7D82400C6E2A2 /* Cell */ = {
+		724A61BD28B7D82400C6E2A2 /* GenericCell */ = {
 			isa = PBXGroup;
 			children = (
-				725E53082891A92C00F72EF0 /* CharacterCollectionViewCell.swift */,
+				725FCD1E28CF9CFD00E731CA /* ViewModel */,
+				725FCD1C28CF9CEE00E731CA /* Screen */,
 			);
-			path = Cell;
+			path = GenericCell;
 			sourceTree = "<group>";
 		};
 		724A61C028B7DA3000C6E2A2 /* Gender */ = {
 			isa = PBXGroup;
 			children = (
-				720B27CF28CEC0C70056A5C0 /* Controller */,
 				722B9CC728C9726F00D7B728 /* ViewModel */,
+				720B27CF28CEC0C70056A5C0 /* Controller */,
 				722B9CC428C9724700D7B728 /* Cell */,
 			);
 			path = Gender;
@@ -385,9 +388,9 @@
 		7257742E28C502BE0060D432 /* GenericList */ = {
 			isa = PBXGroup;
 			children = (
-				720B27B528CE979C0056A5C0 /* Controller */,
 				720B27AF28CE7CFB0056A5C0 /* ViewModel */,
-				724A61BD28B7D82400C6E2A2 /* Cell */,
+				720B27B528CE979C0056A5C0 /* Controller */,
+				724A61BD28B7D82400C6E2A2 /* GenericCell */,
 			);
 			path = GenericList;
 			sourceTree = "<group>";
@@ -399,6 +402,22 @@
 				7257743328C5506E0060D432 /* UIImageView.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		725FCD1C28CF9CEE00E731CA /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				725E53082891A92C00F72EF0 /* CharacterCollectionViewCell.swift */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		725FCD1E28CF9CFD00E731CA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				725FCD2028CF9E1900E731CA /* CustomCellViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		727BD89C28B97322009707F6 /* Fonts */ = {
@@ -502,6 +521,7 @@
 				7255741627F22B13002B20F2 /* Service.swift in Sources */,
 				722B9CBC28C96FA600D7B728 /* GenderTableViewCell.swift in Sources */,
 				7294EAA328BBCA0300F9F5AC /* UIColor.swift in Sources */,
+				725FCD2128CF9E1900E731CA /* CustomCellViewModel.swift in Sources */,
 				7252656C28AC155B00878D7F /* DetailViewModel.swift in Sources */,
 				725094F628973F1400BE710A /* WelcomeScreen.swift in Sources */,
 				722B9CBF28C9707E00D7B728 /* GenderViewModel.swift in Sources */,

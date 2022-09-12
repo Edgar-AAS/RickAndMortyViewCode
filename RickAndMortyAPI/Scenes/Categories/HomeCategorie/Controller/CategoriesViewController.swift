@@ -14,10 +14,10 @@ final class CategoriesViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = "Categories"
+        title = viewModel.getTitle
         
         self.tableView = UITableView(frame: CGRect.zero, style: .grouped)
-        tableView.rowHeight = 100
+        tableView.rowHeight = viewModel.tableViewRowHeight
         tableView.register(CategoriesTableViewCell.self, forCellReuseIdentifier: CategoriesTableViewCell.categorieCell)
     }
 
@@ -50,7 +50,8 @@ extension CategoriesViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoriesTableViewCell.categorieCell, for: indexPath) as? CategoriesTableViewCell else { fatalError("Unable to dequeue GenderCell")}
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CategoriesTableViewCell.categorieCell, for: indexPath) as? CategoriesTableViewCell else {
+            fatalError("Unable to dequeue GenderCell")}
         cell.setupCategorieCell(categorie: viewModel.getCategorie(indexPath: indexPath))
         return cell
     }

@@ -13,9 +13,9 @@ final class GenderTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "Gender"
+        title = viewModel.getTitle
         
-        tableView.rowHeight = 100
+        tableView.rowHeight = viewModel.tableViewRowHeight
         tableView.register(GenderTableViewCell.self, forCellReuseIdentifier: GenderTableViewCell.genderCell)
     }
     
