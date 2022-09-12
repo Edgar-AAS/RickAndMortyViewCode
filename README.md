@@ -6,7 +6,8 @@
 
  Este é um projeto de listagem de personagens da série Rick And Morty. Construído com intuito de Praticar conhecimentos adquiridos, este aplicativo contém coleções de personagens separados por categorias. Cada personagem contém suas especificações (Retirados de uma API) e a possiblidade de o usuario favorita-los.
 
-![RickAndMortyGIF](https://user-images.githubusercontent.com/103855076/188989648-0e66068c-07c6-485f-85d8-3f7e9cde527f.gif)
+![RickAndMortyGif](https://user-images.githubusercontent.com/103855076/189564996-d5d7083a-6069-4ca8-830b-2e7fb0f727aa.gif)
+
 
 * [Tecnologias utilizadas](#tecnologias-utilizadas)
   * Linguagem Swift nativa
