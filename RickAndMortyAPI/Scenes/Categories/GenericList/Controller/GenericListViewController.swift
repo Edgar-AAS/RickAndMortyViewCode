@@ -4,7 +4,6 @@
     //
     //  Created by Edgar Arlindo on 28/03/22.
     //
-    
     import UIKit
     
     final class GenericListViewController: UIViewController {
