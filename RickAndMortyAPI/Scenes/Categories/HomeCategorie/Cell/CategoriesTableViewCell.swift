@@ -14,16 +14,15 @@ class CategoriesTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
     func setupCategorieCell(categorie: String) {
-       backgroundColor = .black
-       textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-       textLabel?.textColor = .white
-       textLabel?.text = categorie
-       accessoryType = .disclosureIndicator
+        backgroundColor = .black
+        textLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        textLabel?.textColor = .white
+        textLabel?.text = categorie
     }
 }

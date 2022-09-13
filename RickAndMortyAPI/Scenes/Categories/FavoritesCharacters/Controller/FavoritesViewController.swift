@@ -48,9 +48,9 @@ final class FavoritesViewController: UIViewController {
         viewModel.fetchFavoritesResult()
         viewModel.reverseFavoriteResults()
         
-        UIView.performWithoutAnimation {
-            collectionView?.reloadData()
-        }
+        
+        collectionView?.reloadData()
+        
     }
 }
 

@@ -23,10 +23,8 @@ final class SpeciesTableViewCell: UITableViewCell {
     
     func setupSpecieCell(specie: String) {
        backgroundColor = .black
-       textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+       textLabel?.font = UIFont.boldSystemFont(ofSize: 20)
        textLabel?.textColor = .white
        textLabel?.text = specie
-       accessoryType = .disclosureIndicator
     }
-
 }

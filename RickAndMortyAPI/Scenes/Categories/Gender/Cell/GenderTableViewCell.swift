@@ -23,8 +23,7 @@ final class GenderTableViewCell: UITableViewCell {
         textLabel?.text = gender
         backgroundColor = .black
         textLabel?.textColor = .white
-        textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-        accessoryType = .disclosureIndicator
+        textLabel?.font = UIFont.boldSystemFont(ofSize: 20)
     }
     
 }

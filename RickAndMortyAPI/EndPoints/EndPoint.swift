@@ -22,7 +22,6 @@ struct EndPoint {
     static let poopybutthole = "&species=poopybutthole"
     static let mythologicalCreature = "&species=Mythological%20Creature"
     
-    
     static func buildUrl(currentPage: Int, endPoint: String) -> String {
         let urlBase = "https://rickandmortyapi.com/api/character/"
         let urlString = urlBase + "?page=\(currentPage)" + endPoint

@@ -2,7 +2,7 @@
 //  RickAndMortyManager.swift
 //  RickAndMortyAPI
 //
-//  Created by Edgar Arlindo on 28/03/22.
+//  Created by Edgar Arlindo on 17/08/22.
 //
 
 import Foundation

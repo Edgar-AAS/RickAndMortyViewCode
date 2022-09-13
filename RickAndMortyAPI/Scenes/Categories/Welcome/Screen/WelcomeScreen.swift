@@ -23,7 +23,7 @@ final class WelcomeScreen: UIView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: "GetSchwifty-Regular", size: 48)
+        label.font = UIFont(name: "GetSchwifty-Regular", size: 55)
         label.textColor = UIColor(hexString: "64CCDA")
         label.textAlignment = .center
         return label
@@ -34,7 +34,7 @@ final class WelcomeScreen: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(didTapAction), for: .touchUpInside)
         button.setTitle("Characters", for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 28)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 36)
         button.backgroundColor = UIColor(named: "ColorComponents")
         return button
     }()
