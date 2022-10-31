@@ -14,5 +14,6 @@
   * View Code: Para construção da Inteface de Usuário
   * Core data: Para persistência de dados dos personagens favoritados
   * URLSession: Para requisições de imagens e atributos dos personagens
-  * Arquitetura MVVM: buscando aplicar os principios SOLID
+  * Arquitetura MVVM: Buscando aplicar os principios SOLID
+  * Coordinator pattern: Para roteamento de telas e injeção de dependências
   * Paradigma de orientação a objetos
