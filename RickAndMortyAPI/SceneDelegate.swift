@@ -13,11 +13,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
+        UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+        UINavigationBar.appearance().backgroundColor = .black
+        
+        let navController = UINavigationController()
+        
+        let coordinator = MainCoordinator()
+        coordinator.navigationController = navController
+        
         window = UIWindow(windowScene: windowScene)
-        let controller = UINavigationController(rootViewController: WelcomeViewController())
-        window?.rootViewController = controller
+        window?.rootViewController = navController
         window?.makeKeyAndVisible()
         
+        coordinator.start()
     }
 }
 

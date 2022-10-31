@@ -14,30 +14,29 @@ enum NetworkError: Error {
 }
 
 class WebService {
-    static func getAllRequest <T: Codable> (of type: T.Type, from api: String, completion: @escaping ((Result <T, Error>) -> ())) {
-        guard let url = URL(string: api) else {
+    static func getAllRequest <T: Codable> (of type: T.Type, from urlService: String, completion: @escaping ((Result<T, Error>) -> ())) {
+        
+        let urlWihoutSpace = urlService.replacingOccurrences(of: " ", with: "%20")
+        
+        guard let url = URL(string: urlWihoutSpace) else {
             completion(.failure(NetworkError.badURL))
             return
         }
-        
+                
         URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let error = error {
-                print(error)
-            }
-            
             guard let response = response as? HTTPURLResponse else {
                 completion(.failure(NetworkError.invalidResponse))
                 return
             }
             
             if 200...299 ~= response.statusCode {
-                guard let data = data else {
+                guard let jsonData = data else {
                     completion(.failure(NetworkError.invalidData))
                     return
                 }
                 
                 do {
-                    let data: T =  try JSONDecoder().decode(T.self, from: data)
+                    let data: T =  try JSONDecoder().decode(T.self, from: jsonData)
                     completion(.success(data))
                 } catch {
                     completion(.failure(error))

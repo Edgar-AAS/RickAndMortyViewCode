@@ -5,6 +5,7 @@
 //  Created by Edgar Arlindo on 31/07/22.
 //
 
+//template method
 import Foundation
 
 protocol CodeView {
