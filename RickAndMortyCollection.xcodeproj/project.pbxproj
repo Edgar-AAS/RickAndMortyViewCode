@@ -295,12 +295,12 @@
 			path = Species;
 			sourceTree = "<group>";
 		};
-		725094D52896DB9100BE710A /* Scene */ = {
+		725094D52896DB9100BE710A /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
 				725094DC2896DDDC00BE710A /* Categories */,
 			);
-			path = Scene;
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 		725094D62896DB9E00BE710A /* Welcome */ = {
@@ -401,7 +401,7 @@
 				720B27B928CEB24A0056A5C0 /* EndPoints */,
 				72E1F38927F39BAD0049F451 /* Model */,
 				725094E42896FCCE00BE710A /* Service */,
-				725094D52896DB9100BE710A /* Scene */,
+				725094D52896DB9100BE710A /* Scenes */,
 				7255740927F22A0A002B20F2 /* Assets.xcassets */,
 				7255740E27F22A0A002B20F2 /* Info.plist */,
 			);

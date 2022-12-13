@@ -24,18 +24,3 @@ enum GenderType: String {
     case genderless = "genderless"
     case unknown = "unknown"
 }
-
-//enum SpeciesType: String {
-//    case alive = "Alive"
-//    case dead = "Dead"
-
-//    case species = "Species"
-//    case gender = "Gender"
-//    case favorites = "Favorites"
-//    case human = "Human"
-//    case humanoid = "Humanoid"
-//    case alien = "Alien"
-//    case poopybutthole = "Poopybutthole"
-//    case mythologycalCreature = "Mythological Creature"
-
-//}

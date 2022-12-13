@@ -9,8 +9,8 @@ import UIKit.UIImageView
 import CoreData
 
 protocol GenericListViewModelDelegate: AnyObject {
-    func didUpadateController(_ genericListViewModel: GenericListViewModel, charactersResult: RickAndMortyData)
-    func didFailRequest(_ : GenericListViewModel, error: Error)
+    func successRequest()
+    func didFailRequest(error: Error)
 }
 
 final class GenericListViewModel {
@@ -70,15 +70,19 @@ final class GenericListViewModel {
     weak var delegate: GenericListViewModelDelegate?
     
     func fetchCategory(currentPage: Int) {
-        WebService.getAllRequest(of: RickAndMortyData.self, from: endPointProtocol.buildURLString(currentPage: currentPage)) { (result) in
+        WebService.getAllRequest(of: RickAndMortyData.self, from: endPointProtocol.buildURLString(currentPage: currentPage)) { [weak self] (result) in
+            guard let self = self else {
+                return
+            }
+            
             switch result {
-            case .success(let result):
-                DispatchQueue.main.async {
-                    self.delegate?.didUpadateController(self, charactersResult: result)
-                    self.charaterResults.append(contentsOf: result.results)
-                }
-            case .failure(let error):
-                print(error)
+                case .success(let result):
+                    DispatchQueue.main.async {
+                        self.charaterResults.append(contentsOf: result.results)
+                        self.delegate?.successRequest()
+                    }
+                case .failure(let error):
+                    self.delegate?.didFailRequest(error: error)
             }
         }
     }

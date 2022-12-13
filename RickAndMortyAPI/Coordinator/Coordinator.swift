@@ -1,10 +1,3 @@
-//
-//  Coordinator.swift
-//  RickAndMortyAPI
-//
-//  Created by Leonardo Almeida on 27/10/22.
-//
-
 import UIKit
 
 enum Event {

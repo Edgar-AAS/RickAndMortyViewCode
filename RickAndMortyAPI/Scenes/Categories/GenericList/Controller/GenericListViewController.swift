@@ -8,9 +8,7 @@
     
     final class GenericListViewController: UIViewController, Coordinating {
         var coordinator: Coordinator?
-        
         private var collectionView: UICollectionView?
-        
         private var viewModel: GenericListViewModel
         
         init(viewModel: GenericListViewModel) {
@@ -54,7 +52,6 @@
             super.viewWillAppear(animated)
             
             viewModel.loadFavorites()
-            
             guard let indexPath = collectionView?.indexPathsForSelectedItems else { return }
             collectionView?.reloadItems(at: indexPath)
         }
@@ -62,13 +59,13 @@
     
     //MARK: - Updating ViewController
     extension GenericListViewController: GenericListViewModelDelegate {
-        func didUpadateController(_ genericListViewModel: GenericListViewModel, charactersResult: RickAndMortyData) {
+        func successRequest() {
             UIView.performWithoutAnimation {
                 collectionView?.reloadData()
             }
         }
         
-        func didFailRequest(_ genericListViewModel: GenericListViewModel, error: Error) {
+        func didFailRequest(error: Error) {
             print(error)
         }
     }
