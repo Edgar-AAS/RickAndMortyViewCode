@@ -6,12 +6,10 @@
 
 ![RickAndMortyGif](https://user-images.githubusercontent.com/103855076/189564996-d5d7083a-6069-4ca8-830b-2e7fb0f727aa.gif)
 
-
 * [Tecnologias utilizadas](#tecnologias-utilizadas)
   * Linguagem Swift nativa
   * View Code: Para construção da Inteface de Usuário
   * Core data: Para persistência de dados dos personagens favoritados
   * URLSession: Para requisições de imagens e atributos dos personagens
-  * Arquitetura MVVM: Buscando aplicar os principios SOLID
   * Coordinator pattern: Para roteamento de telas e injeção de dependências
   * Paradigma de orientação a objetos
